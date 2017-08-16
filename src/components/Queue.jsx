@@ -1,6 +1,8 @@
 import React from "react";
 import TicketList from './TicketList';
 import NewTicketControl from './NewTicketControl';
+import moment from "moment";
+
 
 class Queue extends React.Component {
 
@@ -31,9 +33,10 @@ class Queue extends React.Component {
 
   updateTicketTimeSinceOpened() {
     let newMasterTicketList = this.state.masterTicketList.slice();
-    newMasterTicketList.forEach((ticket) =>
-      ticket.setTimeSinceOpened()
-    );
+    newMasterTicketList.forEach((ticket) => {
+      ticket.timeSinceOpened = moment(ticket.timeOpened).fromNow(true);
+      console.log(ticket.timeSinceOpened);
+    });
     this.setState({masterTicketList:newMasterTicketList})
   }
 
@@ -41,7 +44,7 @@ class Queue extends React.Component {
     return (
       <div>
         <TicketList ticketList = {this.state.masterTicketList}/>
-        <NewTicketControl onNewTicketCreation= {this.addNewTicketToList}/>
+        <NewTicketControl onNewTicketCreation = {this.addNewTicketToList}/>
       </div>
     );
   }
