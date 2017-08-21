@@ -4,10 +4,14 @@ import c from './../../src/constants';
 describe("Ticket list reducer", () => {
   let action;
   const ticketInfo = {
-    names : "Ryan & Aimen",
+    names : [
+      'Ryan',
+      'Aimen'
+    ],
     location : "4b",
     description : "Jest is being a diva and won't work well with webpack",
     timeOpened : 1500000000000,
+    id: 0
   };
 
   test('should return equivalent state if no action type is recognized', () => {

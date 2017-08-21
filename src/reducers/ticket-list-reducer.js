@@ -1,7 +1,7 @@
 export default (state = [], action) => {
   switch (action.type) {
     case 'ADD_TICKET':
-      const { names, location, description, timeOpened } = action.ticketInfo;
+      const { names, location, description, timeOpened, id } = action.ticketInfo;
       return [
         ...state,
         {
@@ -9,6 +9,7 @@ export default (state = [], action) => {
           location : location,
           description : description,
           timeOpened : timeOpened,
+          id: id
         }
       ]
     default:
