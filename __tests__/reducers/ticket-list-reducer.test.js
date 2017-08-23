@@ -20,9 +20,14 @@ describe("Ticket list reducer", () => {
   });
 
   test('should add ticket to list array', () => {
+    const { names, location, description, timeOpened, id } = ticketInfo;
     action = {
       type: c.ADD_TICKET,
-      ticketInfo : ticketInfo
+      names : names,
+      location: location,
+      description: description,
+      timeOpened: timeOpened,
+      id: id
     };
     const futureState = [ ticketInfo ];
     expect(ticketList([], action)).toEqual([ ticketInfo ]);
