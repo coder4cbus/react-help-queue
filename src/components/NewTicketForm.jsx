@@ -8,14 +8,22 @@ class NewTicketForm extends React.Component {
 
   constructor(props){
     super(props);
-    console.log(props);
     this.handleNewTicketFormSubmission = this.handleNewTicketFormSubmission.bind(this);
   }
 
   handleNewTicketFormSubmission(event) {
     event.preventDefault();
     const { _names, _location, _issue } = this.refs;
-    
+    const { dispatch } = this.props;
+    const action = {
+      type: c.ADD_TICKET,
+      id: null,
+      names: _names.value,
+      location: _location.value,
+      description: _issue.value,
+      timeOpened: new Date().getTime()
+    }
+    const foo = dispatch(action);
     var newTicket = new Ticket(_names.value, _location.value, _issue.value);
     this.props.onNewTicketCreation(newTicket);
     this.props.hideFormAfterSubmission();
