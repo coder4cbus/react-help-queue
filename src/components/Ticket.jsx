@@ -10,7 +10,7 @@ function Ticket(props){
     <div>
       <h3>{props.location} - {props.names}</h3>
       <p><em>{props.issue}</em></p>
-      <p>{props.timeOpened}</p>
+      <p>{timeSinceOpened}</p>
       <hr/>
     </div>
   );
