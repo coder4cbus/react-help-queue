@@ -56,7 +56,6 @@ class NewTicketForm extends React.Component {
 }
 
 NewTicketForm.propTypes = {
-  onNewTicketCreation: PropTypes.func,
   hideFormAfterSubmission: PropTypes.func
 }
 
