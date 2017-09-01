@@ -24,8 +24,6 @@ class NewTicketForm extends React.Component {
       timeOpened: new Date().getTime()
     }
     dispatch(action);
-    var newTicket = new Ticket(_names.value, _location.value, _issue.value);
-    this.props.onNewTicketCreation(newTicket);
     this.props.hideFormAfterSubmission();
   }
 
