@@ -19,7 +19,7 @@ try {
   retrievedState = [];
 }
 
-const store = createStore(reducer, applyMiddleware(middlewareLogger, persistDataLocally));
+const store = createStore(reducer, retrievedState, applyMiddleware(middlewareLogger, persistDataLocally));
 
 ReactDOM.render(
   <Provider store={store}>
