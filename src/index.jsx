@@ -6,8 +6,9 @@ import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers/ticket-list-reducer';
 import { Provider } from 'react-redux';
 import middlewareLogger from './middleware/middleware-logger';
+import persistDataLocally from './middleware/persist-local-storage-data';
 
-const store = createStore(reducer, applyMiddleware(middlewareLogger));
+const store = createStore(reducer, applyMiddleware(middlewareLogger, persistDataLocally));
 
 ReactDOM.render(
   <Provider store={store}>
