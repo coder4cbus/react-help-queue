@@ -24,7 +24,9 @@ const store = createStore(reducer, retrievedState, applyMiddleware(middlewareLog
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <HashRouter>
+      <App />
+    <HashRouter/>
   </Provider>,
   document.getElementById('react-app-root')
 );
