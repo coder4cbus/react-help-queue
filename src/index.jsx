@@ -7,7 +7,7 @@ import reducer from './reducers/ticket-list-reducer';
 import { Provider } from 'react-redux';
 import middlewareLogger from './middleware/middleware-logger';
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(middlewareLogger));
 
 ReactDOM.render(
   <Provider store={store}>
