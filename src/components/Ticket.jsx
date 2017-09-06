@@ -20,7 +20,8 @@ Ticket.propTypes = {
   names: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   timeOpened: PropTypes.number.isRequired,
-  issue: PropTypes.string
+  issue: PropTypes.string,
+  currentRoute: PropTypes.string
 };
 
 
