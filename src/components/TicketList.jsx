@@ -12,6 +12,7 @@ function TicketList(props){
           issue={ticket.issue}
           timeOpened={ticket.timeOpened}
           key={ticket.id}
+          id={ticket.id}
           currentRoute={props.currentRoute}
           handleClosingTicket={props.handleClosingTicket}/>
       )}
