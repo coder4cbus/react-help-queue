@@ -11,7 +11,8 @@ function TicketList(props){
           location={ticket.location}
           issue={ticket.issue}
           timeOpened={ticket.timeOpened}
-          key={ticket.id}/>
+          key={ticket.id}
+          currentRoute={props.currentRoute}/>
       )}
     </div>
   );
