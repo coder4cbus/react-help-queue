@@ -33,7 +33,8 @@ Ticket.propTypes = {
   location: PropTypes.string.isRequired,
   timeOpened: PropTypes.number.isRequired,
   issue: PropTypes.string,
-  currentRoute: PropTypes.string
+  currentRoute: PropTypes.string,
+  handleClosingTicket: PropTypes.func
 };
 
 
