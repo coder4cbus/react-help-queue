@@ -18,7 +18,8 @@ function TicketList(props){
 }
 
 TicketList.propTypes = {
-  ticketList: PropTypes.array.isRequired
+  ticketList: PropTypes.array.isRequired,
+  currentRoute: PropTypes.string
 };
 
 export default TicketList;
