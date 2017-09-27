@@ -28,10 +28,25 @@ class Queue extends React.Component {
 
   render() {
     const { firebase, firebaseDatabaseObject } = this.props;
-    console.log("RADICAL DATA FROM FIREBASE!", firebaseDatabaseObject);
+
+    let contentFromFirebase;
+    if (!isLoaded(firebaseDatabaseObject)) {
+      contentFromFirebase = "Loading";
+    } else {
+      if (isEmpty(firebaseDatabaseObject)) {
+        contentFromFirebase = "No tickets in the queue!";
+      } else {
+        let newTicketArray = [];
+        Object.keys(firebaseDatabaseObject).map(key => {
+          newTicketArray.push(firebaseDatabaseObject[key]);
+        })
+        contentFromFirebase = <TicketList ticketList = {newTicketArray} />
+      }
+    }
+
     return (
       <div>
-        <TicketList ticketList = {["hey"]}/>
+        {contentFromFirebase}
         <NewTicketControl />
       </div>
     );
