@@ -38,7 +38,7 @@ class Queue extends React.Component {
       } else {
         let newTicketArray = [];
         Object.keys(firebaseDatabaseObject).map(key => {
-          newTicketArray.push(firebaseDatabaseObject[key]);
+          newTicketArray.push(Object.assign(firebaseDatabaseObject[key], {"id": key}));
         })
         contentFromFirebase = <TicketList ticketList = {newTicketArray} />
       }
