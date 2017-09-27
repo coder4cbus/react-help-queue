@@ -12,12 +12,8 @@ class Admin extends React.Component {
   }
 
   handleClosingTicket(ticketId) {
-    const { dispatch } = this.props;
-    const action = {
-      type: c.CLOSE_TICKET,
-      ticketId: ticketId,
-    }
-    dispatch(action);
+    const { firebase } = this.props;
+    firebase.remove(`/tickets/${ticketId}`);
   }
 
   render(){
@@ -32,7 +28,7 @@ class Admin extends React.Component {
       } else {
         let newTicketArray = [];
         Object.keys(firebaseDatabaseObject).map(key => {
-          newTicketArray.push(firebaseDatabaseObject[key]);
+          newTicketArray.push(Object.assign(firebaseDatabaseObject[key], {"id": key}));
         })
         contentFromFirebase = <TicketList
           ticketList = {newTicketArray}  // Make sure to change this to newTicketArray!
