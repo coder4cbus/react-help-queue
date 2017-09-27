@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from './components/App';
 import styles from './styles/styles.css';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducers/ticket-list-reducer';
 import { Provider } from 'react-redux';
 import middlewareLogger from './middleware/middleware-logger';
 import persistDataLocally from './middleware/persist-local-storage-data';
 import { HashRouter } from 'react-router-dom';
+import { reduxFirebase } from 'react-redux-firebase';
+import firebaseCredentials from './constants/apiKeys.js';
 
 let retrievedState;
 try {
