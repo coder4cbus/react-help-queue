@@ -6,23 +6,18 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducers/ticket-list-reducer';
 import { Provider } from 'react-redux';
 import middlewareLogger from './middleware/middleware-logger';
-import persistDataLocally from './middleware/persist-local-storage-data';
 import { HashRouter } from 'react-router-dom';
 import { reduxFirebase } from 'react-redux-firebase';
 import firebaseCredentials from './constants/apiKeys.js';
 
-let retrievedState;
-try {
-    retrievedState = localStorage.getItem("reduxStore");
-  if (retrievedState === null){
-    retrievedState = [];
-  }
-  retrievedState = JSON.parse(retrievedState);
-} catch (err){
-  retrievedState = [];
-}
+const createStoreWithFirebaseMiddleware = compose(
+  reduxFirebase(firebaseCredentials)
+)(createStore);
 
-const store = createStore(reducer, retrievedState, applyMiddleware(middlewareLogger, persistDataLocally));
+const store = createStoreWithFirebaseMiddleware(
+  combinedReducer,
+  applyMiddleware(middlewareLogger),
+);
 
 ReactDOM.render(
   <Provider store={store}>
