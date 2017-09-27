@@ -2,6 +2,7 @@ import React from "react";
 import TicketList from './TicketList';
 import NewTicketControl from './NewTicketControl';
 import {connect} from 'react-redux';
+import { firebase, isLoaded, isEmpty, dataToJS } from 'react-redux-firebase'
 
 class Queue extends React.Component {
 
@@ -26,6 +27,8 @@ class Queue extends React.Component {
   }
 
   render() {
+    const { firebase, firebaseDatabaseObject } = this.props;
+    console.log("RADICAL DATA FROM FIREBASE!", firebaseDatabaseObject);
     return (
       <div>
         <TicketList ticketList = {["hey"]}/>
@@ -35,12 +38,10 @@ class Queue extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state);
-  return {
-    masterTicketList : state
-  }
-}
+const firebaseWrappedComponent = firebase(['/tickets'])(Queue);
 
-
-export default connect(mapStateToProps)(Queue);
+export default connect(
+  ({firebase}) => ({
+    firebaseDatabaseObject: dataToJS(firebase, 'tickets')
+  })
+)(firebaseWrappedComponent);
