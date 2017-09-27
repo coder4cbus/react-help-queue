@@ -9,6 +9,7 @@ import middlewareLogger from './middleware/middleware-logger';
 import { HashRouter } from 'react-router-dom';
 import { reduxFirebase } from 'react-redux-firebase';
 import firebaseCredentials from './constants/apiKeys.js';
+import combinedReducer from './reducers/index';
 
 const createStoreWithFirebaseMiddleware = compose(
   reduxFirebase(firebaseCredentials)
