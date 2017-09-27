@@ -1,7 +1,7 @@
 import React from "react";
 import TicketList from './TicketList';
 import {connect} from 'react-redux';
-import c from './../constants';
+import c from './../constants/constants';
 
 class Admin extends React.Component {
 
