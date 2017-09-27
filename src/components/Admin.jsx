@@ -18,7 +18,6 @@ class Admin extends React.Component {
 
   render(){
     const { firebase, firebaseDatabaseObject } = this.props;
-
     let contentFromFirebase;
     if (!isLoaded(firebaseDatabaseObject)) {
       contentFromFirebase = "Loading";
