@@ -9,24 +9,19 @@ class NewTicketForm extends React.Component {
 
   constructor(props){
     super(props);
-    console.log("CHECK OUT THESE SWEET PROPS:", props);
     this.handleNewTicketFormSubmission = this.handleNewTicketFormSubmission.bind(this);
   }
 
   handleNewTicketFormSubmission(event) {
     event.preventDefault()
     const { _names, _location, _issue } = this.refs;
-    const { dispatch } = this.props;
-    const action = {
-      type: c.ADD_TICKET,
-      id: v4(),
-      names: _names.value,
-      location: _location.value,
-      description: _issue.value,
-      timeOpened: new Date().getTime()
-    }
-    console.log(action.id);
-    dispatch(action);
+    const { firebase } = this.props;
+       firebase.push('/tickets', {
+         names: _names.value,
+         location: _location.value,
+         description: _issue.value,
+         timeOpened: new Date().getTime()
+       })
     this.props.hideFormAfterSubmission();
   }
 
