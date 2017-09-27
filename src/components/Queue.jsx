@@ -28,7 +28,7 @@ class Queue extends React.Component {
   render() {
     return (
       <div>
-        <TicketList ticketList = {this.props.masterTicketList}/>
+        <TicketList ticketList = {["hey"]}/>
         <NewTicketControl />
       </div>
     );

@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import c from './../constants/constants';
 import { v4 } from 'uuid';
+import { firebaseConnect } from 'react-redux-firebase';
 
 class NewTicketForm extends React.Component {
 
   constructor(props){
     super(props);
-    console.log(props);
+    console.log("CHECK OUT THESE SWEET PROPS:", props);
     this.handleNewTicketFormSubmission = this.handleNewTicketFormSubmission.bind(this);
   }
 
@@ -61,6 +62,5 @@ NewTicketForm.propTypes = {
   hideFormAfterSubmission: PropTypes.func
 }
 
-NewTicketForm = connect()(NewTicketForm);
-
-export default NewTicketForm;
+const firebaseWrappedNewTicketForm = firebaseConnect(['/tickets'])(NewTicketForm)
+export default connect()(firebaseWrappedNewTicketForm)
