@@ -1,5 +1,5 @@
-export default (state = [], action) => {
-  switch (action.type) {
+const ticketList = (state = [], action) => {
+    switch (action.type) {
     case 'ADD_TICKET':
       const { names, location, description, timeOpened, id } = action;
       return [
@@ -19,3 +19,5 @@ export default (state = [], action) => {
       return state;
   }
 }
+
+export default ticketList;
