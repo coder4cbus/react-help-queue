@@ -3,12 +3,8 @@ const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-
   entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    resolve(__dirname, "src", "index.jsx")
+    './src/index.jsx'
   ],
 
   output: {
@@ -21,17 +17,9 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
 
-  devtool: '#source-map',
-
-  devServer: {
-    hot: true,
-    contentBase: resolve(__dirname, 'build'),
-    publicPath: '/'
-  },
-
   module: {
     rules: [
-      {
+        {
         test: /\.jsx?$/,
         loader: "babel-loader",
         exclude: /node_modules/,
@@ -66,13 +54,18 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       template:'template.ejs',
       appMountId: 'react-app-root',
-      title: 'React Help Queue',
+      title: 'Redux Karaoke',
       filename: resolve(__dirname, "build", "index.html"),
     }),
-  ],
+  ]
 };
