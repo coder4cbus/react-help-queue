@@ -5,7 +5,6 @@ import styles from './styles/styles.css';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducers/ticket-list-reducer';
 import { Provider } from 'react-redux';
-import middlewareLogger from './middleware/middleware-logger';
 import { HashRouter } from 'react-router-dom';
 import { reduxFirebase } from 'react-redux-firebase';
 import firebaseCredentials from './constants/apiKeys.js';
@@ -17,7 +16,6 @@ const createStoreWithFirebaseMiddleware = compose(
 
 const store = createStoreWithFirebaseMiddleware(
   combinedReducer,
-  applyMiddleware(middlewareLogger),
 );
 
 ReactDOM.render(
