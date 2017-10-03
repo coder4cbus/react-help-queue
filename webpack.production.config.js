@@ -60,7 +60,7 @@ module.exports = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       template:'template.ejs',
       appMountId: 'react-app-root',
