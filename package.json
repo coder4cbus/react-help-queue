@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest --watchAll",
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack",
+    "prod": "NODE_ENV=production node server.js",
+    "prodbuild": "webpack --config webpack.production.config.js"
   },
   "author": "",
   "license": "ISC",
