@@ -1,5 +1,6 @@
 import React from "react";
 import Ticket from './Ticket';
+import NewTicketControl from './NewTicketControl';
 
 var masterTicketList = [
   {
@@ -30,6 +31,7 @@ function TicketList(props){
           issue={ticket.issue}
           key={index}/>
       )}
+      <NewTicketControl/>
     </div>
   );
 }
