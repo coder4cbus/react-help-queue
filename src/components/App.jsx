@@ -2,6 +2,7 @@ import React from "react";
 import TicketList from './TicketList';
 import Header from './Header';
 import NewTicketControl from './NewTicketControl';
+import Admin from './Admin';
 import { Switch, Route } from 'react-router-dom';
 
 function App(props){
