@@ -10,6 +10,7 @@ function App(props){
       <Header/>
       <Switch>
         <Route exact path="/" component={TicketList} />
+        <Route path="/admin" component={Admin} />
       </Switch>
     </div>
   );
