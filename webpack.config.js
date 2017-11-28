@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
@@ -47,26 +48,29 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader'
-      },
-      {
-        test: /\.css$/,
-        loader: 'css-loader',
-        exclude: resolve(__dirname, "src/styles/styles.css"),
-        options: {
-         modules: true,
-         localIdentName: '[name]__[local]___[hash:base64:5]'
-       }
-     },
-     {
-       test: resolve(__dirname, "src/styles/styles.css"),
-       loader: 'css-loader'
-     }
+        use: ['css-hot-loader'].concat(
+          ExtractTextPlugin.extract(
+            {
+              fallback: 'style-loader',
+              use: {
+                loader: 'css-loader',
+                options: {
+                  modules: true,
+                  sourceMap: true,
+                  importLoaders: 2,
+                  localIdentName: '[name]__[local]___[hash:base64:5]'
+                }
+              }
+            }
+          )
+        )
+      }
     ]
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin('styles.css'),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
       template:'template.ejs',
