@@ -1,11 +1,11 @@
 import React from "react";
 import Header from './Header';
 import Queue from './Queue';
-import styles from './styles/App.css';
+import global from './styles/global.css';
 
 function App(props){
   return (
-    <div className = {styles.app}>
+    <div className='exampleClass'>
       <Header/>
       <Queue/>
     </div>

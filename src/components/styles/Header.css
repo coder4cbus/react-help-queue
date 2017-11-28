@@ -1,7 +1,9 @@
 .header {
   background-color: #0A8D8F;
+  color: #FFFFFD;
 }
 
-* {
-  color: #FFFFFD;
+.header h1 {
+  margin: 0;
+  padding: 10px 0;
 }

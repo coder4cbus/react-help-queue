@@ -48,6 +48,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: resolve(__dirname, "src/components/styles/global.css"),
         use: ['css-hot-loader'].concat(
           ExtractTextPlugin.extract(
             {
@@ -59,6 +60,25 @@ module.exports = {
                   sourceMap: true,
                   importLoaders: 2,
                   localIdentName: '[name]__[local]___[hash:base64:5]'
+                }
+              }
+            }
+          )
+        )
+      },
+      {
+        test: /\.css$/,
+        include: resolve(__dirname, "src/components/styles/global.css"),
+        use: ['css-hot-loader'].concat(
+          ExtractTextPlugin.extract(
+            {
+              fallback: 'style-loader',
+              use: {
+                loader: 'css-loader',
+                options: {
+                  modules: false,
+                  sourceMap: true,
+                  importLoaders: 2,
                 }
               }
             }
