@@ -47,40 +47,46 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        exclude: resolve(__dirname, "src/components/styles/global.css"),
+        test: /\.scss$/,
+        exclude: resolve(__dirname, "src/components/styles/global.scss"),
         use: ['css-hot-loader'].concat(
           ExtractTextPlugin.extract(
             {
               fallback: 'style-loader',
-              use: {
-                loader: 'css-loader',
-                options: {
-                  modules: true,
-                  sourceMap: true,
-                  importLoaders: 2,
-                  localIdentName: '[name]__[local]___[hash:base64:5]'
-                }
-              }
+              use: [
+                {
+                  loader: 'css-loader',
+                  options: {
+                    modules: true,
+                    sourceMap: true,
+                    importLoaders: 2,
+                    localIdentName: '[name]__[local]___[hash:base64:5]'
+                  }
+                },
+                'sass-loader'
+              ]
             }
           )
         )
       },
       {
-        test: /\.css$/,
-        include: resolve(__dirname, "src/components/styles/global.css"),
+        test: /\.scss$/,
+        include: resolve(__dirname, "src/components/styles/global.scss"),
         use: ['css-hot-loader'].concat(
           ExtractTextPlugin.extract(
             {
               fallback: 'style-loader',
-              use: {
-                loader: 'css-loader',
-                options: {
-                  modules: false,
-                  sourceMap: true,
-                  importLoaders: 2,
-                }
-              }
+              use: [
+                {
+                  loader: 'css-loader',
+                  options: {
+                    modules: false,
+                    sourceMap: true,
+                    importLoaders: 2,
+                  }
+                },
+                'sass-loader'
+              ]
             }
           )
         )
