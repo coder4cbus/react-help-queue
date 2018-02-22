@@ -15,6 +15,10 @@ export default (state = [], action) => {
           id: id
         }
       ]
+    case c.RECEIVE_TICKET:
+      console.log(state);
+      let newState = state.slice();
+      return newState.concat([action.ticket])
     case c.CLOSE_TICKET:
       const updatedTicketList = state.filter(ticket => ticket.id !== action.ticketId);
       return updatedTicketList

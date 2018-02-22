@@ -6,21 +6,10 @@ import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers/ticket-list-reducer';
 import { Provider } from 'react-redux';
 import middlewareLogger from './middleware/middleware-logger';
-import persistDataLocally from './middleware/persist-local-storage-data';
 import { HashRouter } from 'react-router-dom';
+import thunk from 'redux-thunk';
 
-let retrievedState;
-try {
-    retrievedState = localStorage.getItem("reduxStore");
-  if (retrievedState === null){
-    retrievedState = [];
-  }
-  retrievedState = JSON.parse(retrievedState);
-} catch (err){
-  retrievedState = [];
-}
-
-const store = createStore(reducer, retrievedState, applyMiddleware(middlewareLogger, persistDataLocally));
+const store = createStore(reducer, [], applyMiddleware(middlewareLogger, thunk));
 
 ReactDOM.render(
   <Provider store={store}>

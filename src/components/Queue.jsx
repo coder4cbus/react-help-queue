@@ -1,13 +1,19 @@
 import React from "react";
 import TicketList from './TicketList';
 import NewTicketControl from './NewTicketControl';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { subscribeToTickets } from './actions';
 
 class Queue extends React.Component {
 
   constructor(props) {
     super(props);
     this.updateTicketTimeSinceOpened = this.updateTicketTimeSinceOpened.bind(this);
+  }
+
+  componentWillMount() {
+    const { dispatch } = this.props;
+    dispatch(subscribeToTickets());
   }
 
   componentDidMount() {
