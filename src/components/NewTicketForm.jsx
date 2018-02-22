@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import c from './../constants';
 import { v4 } from 'uuid';
+import { addTicket } from './actions';
 
 class NewTicketForm extends React.Component {
 
@@ -16,16 +17,7 @@ class NewTicketForm extends React.Component {
     event.preventDefault()
     const { _names, _location, _issue } = this.refs;
     const { dispatch } = this.props;
-    const action = {
-      type: c.ADD_TICKET,
-      id: v4(),
-      names: _names.value,
-      location: _location.value,
-      description: _issue.value,
-      timeOpened: new Date().getTime()
-    }
-    console.log(action.id);
-    dispatch(action);
+    dispatch(addTicket(_names.value, _location.value, _issue.value));
     this.props.hideFormAfterSubmission();
   }
 

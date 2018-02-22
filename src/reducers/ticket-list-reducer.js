@@ -1,6 +1,9 @@
+import c from './../constants';
+
+
 export default (state = [], action) => {
   switch (action.type) {
-    case 'ADD_TICKET':
+    case c.ADD_TICKET:
       const { names, location, description, timeOpened, id } = action;
       return [
         ...state,
@@ -12,7 +15,7 @@ export default (state = [], action) => {
           id: id
         }
       ]
-    case 'CLOSE_TICKET':
+    case c.CLOSE_TICKET:
       const updatedTicketList = state.filter(ticket => ticket.id !== action.ticketId);
       return updatedTicketList
     default:
